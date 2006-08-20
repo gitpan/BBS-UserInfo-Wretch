@@ -12,7 +12,7 @@ BBS::UserInfo::Wretch - Get user information of Wretch-style BBS
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -148,10 +148,10 @@ sub query {
 
     print("Waiting for lastelogintime and lastloginip\n") if ($debug);
     $bot->expect($timeout, '-re', '\[³Ìªñ¨Ó·½\]\s\[1;37m([^ ]*).*\[³Ìªñ¤W¯¸\]\s*\[1;37m([^]+)\[m');
-    $h{'lastlogintime'} = ($bot->matchlist)[0];
-    $h{'lastloginip'} = ($bot->matchlist)[1];
-    printf("lastlogintime = %s\n", $h{'lastlogintime'}) if ($debug);
+    $h{'lastloginip'} = ($bot->matchlist)[0];
+    $h{'lastlogintime'} = ($bot->matchlist)[1];
     printf("lastloginip = %s\n", $h{'lastloginip'}) if ($debug);
+    printf("lastlogintime = %s\n", $h{'lastlogintime'}) if ($debug);
     return undef if ($bot->error());
 
     return \%h;
